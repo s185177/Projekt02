@@ -25,7 +25,7 @@ public class UserDAO {
                 bean.setGodkend(false);
             } else if ( next ) {
                 String bruger = resultSet.getString("username");
-                System.out.println("Velkommen" + bruger );
+                System.out.println("Velkommen Rune nu leger vi lidt :)" + bruger );
                 bean.setFornavn( bruger );
                 bean.setGodkend( true );
             }
