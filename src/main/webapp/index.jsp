@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rune
-  Date: 27-10-2019
-  Time: 16:22
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Patientkalender</title>
+        <title>Patient kalender</title>
     </head>
     <body>
         <h1>Login her!</h1><br>
