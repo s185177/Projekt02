@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 @WebServlet("/Borger")
 public class Borger extends HttpServlet {
 
@@ -19,21 +18,18 @@ public class Borger extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             PrintWriter out = response.getWriter();
-            String test1 = request.getParameter("cpr");
-            String test2 = request.getParameter("pass");
-            out.println(test1 + test2);
 
             UserBean user = new UserBean();
             user.setCpr(request.getParameter("cpr"));
             user.setKode(request.getParameter("pass"));
 
             user = UserDAO.validering(user);
-            out.println(user.isGodkend());
             if (user.isGodkend()) {
-                System.out.println("Hej");
                 HttpSession session = request.getSession(true);
                 session.setAttribute("currentSessionUser", user);
                 response.sendRedirect("http://localhost:8080/System_war_exploded/aftaler.jsp");
+            } else if (!user.isGodkend()) {
+                out.println("Forkert login");
             }
         } catch (Throwable e) {
             System.out.println(e);

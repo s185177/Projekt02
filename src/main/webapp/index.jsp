@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Login her!</h1><br>
-
+        <div><a href="ændreTider.jsp">Ændre Tider</a></div>
         <form action="Borger" method="get">
             <!-- Action giver URL videre til borger, som her er java servlet, der validerer og redirecter-->
             CPR:            <input type="text" name="cpr">
