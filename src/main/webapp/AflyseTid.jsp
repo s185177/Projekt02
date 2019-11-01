@@ -38,7 +38,7 @@
 </table>
 
 <form action="aftaler.jsp">
-    <button  align='right' type="submit">Tilbage</button>
+    <button type="submit">Tilbage</button>
 </form>
 </body>
 </html>
