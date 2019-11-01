@@ -27,7 +27,7 @@ public class Borger extends HttpServlet {
             if (user.isGodkend()) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("currentSessionUser", user);
-                response.sendRedirect("http://localhost:8080/System_war_exploded/aftaler.jsp");
+                response.sendRedirect("/test/aftaler.jsp");
             } else if (!user.isGodkend()) {
                 out.println("Forkert login");
             }

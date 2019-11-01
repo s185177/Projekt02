@@ -9,7 +9,7 @@ public class UserDAO {
         try {
             String cpr = bean.getCpr();
             String kode = bean.getKode();
-            String query = "SELECT (*) FROM Patient WHERE CPR='"+cpr+"' AND Kode='" + kode + "'; ";
+            String query = "SELECT * FROM Patient WHERE CPR='"+cpr+"' AND Kode='" + kode + "'; ";
 
             //Afprøvning sqlite
             /*String query ="SELECT* FROM Person WHERE cpr='" + cpr + "' AND kode='" + kode + "' ";
@@ -31,7 +31,7 @@ public class UserDAO {
                 bean.setGodkend(false);
             } else if ( next ) {
                 String bruger = resultSet.getString("cpr");
-                System.out.println("Velkommen: " + bruger );
+                //System.out.println("Velkommen: " + bruger );
                 bean.setFornavn( bruger );
                 bean.setGodkend( true );
             }

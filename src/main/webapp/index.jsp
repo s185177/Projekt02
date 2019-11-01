@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="test.Database" %>
 <html>
     <head>
         <title>Patient kalender</title>
