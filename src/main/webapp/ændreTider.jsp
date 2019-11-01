@@ -11,14 +11,14 @@
 
 <form action="">
     <select name="Sygehus">
-        <option value="">Sygehus 1 </option>
-        <option value="">Sygehus 2</option>
-        <option value="">Sygehus 3</option>
-        <option value="">Sygehus 4</option>
-        <option value="">Sygehus 5</option>
-        <option value="">Sygehus 6</option>
-        <option value="">Sygehus 7</option>
-        <option value="">Sygehus 8</option>
+        <option value="1">Sygehus 1 </option>
+        <option value="2">Sygehus 2</option>
+        <option value="3">Sygehus 3</option>
+        <option value="4">Sygehus 4</option>
+        <option value="5">Sygehus 5</option>
+        <option value="6">Sygehus 6</option>
+        <option value="7">Sygehus 7</option>
+        <option value="8">Sygehus 8</option>
     </select>
     <br><br>
     <button type="submit">OK</button>
@@ -28,7 +28,7 @@
   String Sygehus = "Intet Sygehus";
   String Varighed = "0";
 --%>
-
+<p> Du har valgt: </p>
 
 <table style="border: solid black;" width="100%" cellpadding="20">
     <thead>
