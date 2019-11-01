@@ -1,11 +1,27 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page import="aft.AftaleBean" %>
+<%@ page import="aft.AftaleDao" %>
 <html>
 <head>
     <title>Patient kalender</title>
 </head>
 <body>
 
+<%
+    try {
+        AftaleBean aftale = new AftaleBean();
+        aftale = AftaleDao.hentAftaler(aftale);
+        String sygehus = aftale.getSygehus();
+        out.println(sygehus);
+
+    }catch (Exception e){}
+%>
+
+<%--
+<p> test : data-pubid="<%=sygehus%>"</p>
+--%>
 
 <div id="title" style="background-color: black;">
     <h1 style="color: white; margin-button: 0px;"><br>Dine tider p&aring; hospital 4:</h1><br>

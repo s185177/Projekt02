@@ -20,7 +20,7 @@
         <option value="7">Sygehus 7</option>
         <option value="8">Sygehus 8</option>
     </select>
-    <br><br>
+
     <button type="submit">OK</button>
 </form>
         <%--
@@ -28,7 +28,7 @@
   String Sygehus = "Intet Sygehus";
   String Varighed = "0";
 --%>
-<p> Du har valgt: </p>
+<p> Du har valgt:</p>
 
 <table style="border: solid black;" width="100%" cellpadding="20">
     <thead>
