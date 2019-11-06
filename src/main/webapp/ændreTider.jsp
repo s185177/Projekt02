@@ -5,11 +5,14 @@
     <title>Patient kalender</title>
 </head>
 <body>
-<h1>Ledige Tider</h1>
-<h2>Du er nu ved at ændre tiden for din Røngten undersøgelse</h2>  <%-- der skal indsættes aftaletype som attribut --%>
-<p>Vælg Sygehus:</p>
+<div id="title" style="background-color: black;">
+    <form action="index.jsp" style="text-align:right";>
+        <button type="submit">Log ud</button>
+    </form>
+<h1 style="color: white; margin-button: 0px;">Du er ved at ændre tiden for din Røngten undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
 
-<form action="">
+
+<p style="color:white">Vælg Sygehus for at finde ledige tider:<form action="">
     <select name="Sygehus">
         <option value="1">Sygehus 1 </option>
         <option value="2">Sygehus 2</option>
@@ -21,14 +24,16 @@
         <option value="8">Sygehus 8</option>
     </select>
 
-    <button type="submit">OK</button>
-</form>
+    <button type="submit">OK</button> <br>
+</form> </p>
+<br>
+
         <%--
   String Tid= "Ingen Ledige Tider";
   String Sygehus = "Intet Sygehus";
   String Varighed = "0";
 --%>
-<p> Du har valgt:</p>
+</div>
 
 <table style="border: solid black;" width="100%" cellpadding="20">
     <thead>
@@ -48,7 +53,9 @@
         <td style="border: none;">Kl 10.00</td> <%--Henter her timestamp--%>
 
         <td style="border: none;">15 min</td> <%--Henter her varighed--%>
-        <td style="border: none;"><button type="button">V&AElig;LG</button></td>
+        <td style="border: none;"><form action="ConfirmChangeAppoint.jsp">
+            <button type="submit">VÆLG</button>
+        </form></td>
 
     </tr>
     <tr>

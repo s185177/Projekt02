@@ -9,22 +9,25 @@
 </head>
 <body>
 
-<%
+<%--
     try {
         AftaleBean aftale = new AftaleBean();
         aftale = AftaleDao.hentAftaler(aftale);
-        String sygehus = aftale.getSygehus();
-        out.println(sygehus);
+        String dato = aftale.getDato();
+        out.println(dato);
 
     }catch (Exception e){}
-%>
+--%>
 
 <%--
 <p> test : data-pubid="<%=sygehus%>"</p>
 --%>
 
 <div id="title" style="background-color: black;">
-    <h1 style="color: white; margin-button: 0px;"><br>Dine tider p&aring; hospital 4:</h1><br>
+    <form action="index.jsp" style="text-align:right";>
+        <button type="submit">Log ud</button>
+    </form>
+    <h1 style="color: white; margin-button: 0px;">Dine tider p&aring; sygehus 9:</h1><br>
 </div>
 <table style="border: solid black;" width="100%" cellpadding="20">
     <thead>
@@ -48,20 +51,7 @@
         <button type="submit">Aflys tid</button>
     </form></td>
     </tr>
-    <tr>
-        <td style="border: none;">29/10 Kl. 12.40</td>
-        <td style="border: none;">Blodpr&oslash;ve</td>
-        <td style="border: none;">15</td>
-        <td style="border: none;"><button type="button">&AElig;ndre tid</button></td>
-        <td style="border: none;"><button type="button">Aflys tid</button></td>
-    </tr>
-    <tr>
-        <td style="border: none;">03/11 Kl. 9.20</td>
-        <td style="border: none;">Konsultation</td>
-        <td style="border: none;">45</td>
-        <td style="border: none;"><button type="button">&AElig;ndre tid</button></td>
-        <td style="border: none;"><button type="button">Aflys tid</button></td>
-    </tr>
+
     </tbody>
 </table>
 

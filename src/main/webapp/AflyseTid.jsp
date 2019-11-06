@@ -21,8 +21,8 @@
     </thead>
     <tbody style= "border: none;">
     <td style="border: none;"></td>
-    <td style="border: none;">29/10 Kl. 12.40</td>
-    <td style="border: none;">Blodpr&oslash;ve</td>
+    <td style="border: none;">25/10 Kl. 10.30</td>
+    <td style="border: none;">Røntgen</td>
 
     <td style="border: none;"></td>
     <td style="border: none;"><form action="aftaler.jsp">
