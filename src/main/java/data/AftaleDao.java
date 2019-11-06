@@ -36,12 +36,6 @@ public class AftaleDao {
                 String cpr = resultSet.getString("fkCPR");
                 int varighed = resultSet.getInt("varighed");
 
-                // Skriver alle indlæste kolonner
-                /*System.out.println( "\n" + "Kolonner i aftale: ");
-                for (int i = 1; i < 9; i++) {
-                    System.out.println(resultSet.getString(i));
-                }*/
-
                 bean.setCpr(cpr);
                 bean.setDato(dato);
                 bean.setKommentar(kommentar);
