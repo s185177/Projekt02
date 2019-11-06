@@ -7,6 +7,7 @@ public class AftaleBean {
     private String sygehus;
     private String kommentar;
     private String cpr;
+    private int varighed;
 
 
     public String getCpr() {
@@ -29,6 +30,8 @@ public class AftaleBean {
         return type;
     }
 
+    public int getVarighed() { return varighed; }
+
     public void setCpr(String cpr) {
         this.cpr = cpr;
     }
@@ -47,5 +50,9 @@ public class AftaleBean {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setVarighed(int varighed) {
+        this.varighed = varighed;
     }
 }

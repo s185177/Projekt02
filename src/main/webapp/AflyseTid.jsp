@@ -7,6 +7,7 @@
 <body>
 <div id="title" style="background-color: black;">
     <h1 style="color: white; margin-bottom: 0px;"><br>Du er nu ved at aflyse følgende tid:</h1><br>
+
 </div>
 <table style="border: solid black;" width="100%" cellpadding="20">
     <thead>
