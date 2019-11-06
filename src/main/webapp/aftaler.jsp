@@ -7,6 +7,7 @@
 <%@ page import="data.AftaleDao" %>
 <%@ page import="data.UserBean" %>
 
+
 <html>
 <head>
     <title>Patient kalenderen</title>
@@ -19,14 +20,16 @@
             // Tjekker om man videresendes, hvis ikke man har en session
             System.out.println( "\n" + "Tjekker om man har session, inden aftaler findes: " + bruger );
             if (bruger == null) {
-
-                response.sendRedirect("index.jsp");
+                System.out.println("Jeg er inde");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward( request , response );
+            } else {
+                out.print("Velkommen " + " " + bruger.getFornavn() + " " + bruger.getEfternavn());
             }
-            out.print("Velkommen " + " " + bruger.getFornavn() + " " + bruger.getEfternavn());
         %>
 
     </h2>
-    <form action="index.jsp" style="text-align:right";>
+    <form action="logout.jsp" style="text-align:right";>
         <button type="submit">Log ud</button>
     </form>
     <h1 style="color: white; margin-button: 0px;"><br>Dine tider p&aring; sygehus 9:</h1><br>
@@ -60,17 +63,23 @@
             String type         = aftale.getType();
             int varighed     = aftale.getVarighed() / 60 ;
     %>
+    <form action="ændreTider.jsp" method="post">
             <tr>
                 <td style="border: none;"><%=dato%></td>
                 <td style="border: none;"><%=sygehus%></td>
-                <td style="border: none;"><%=type%></td>
+                <td style="border: none;" ><input type="hidden" name="type" value="<%=type%>"> <%=type%> </td>
                 <td style="border: none;"><%=varighed%></td>
-                <td style="border: none;"><form action="ændreTider.jsp">
-                    <button type="submit">&AElig;ndre tid</button>
-                </form></td>
-                <td style="border: none;"><form action="aflyseTid.jsp">
-                    <button type="submit">Aflys tid</button>
-                </form></td>
+
+                <td style="border: none;">
+
+                        <button type="submit" value="type">Ændre tid</button>
+                    </form>
+                </td>
+                <td style="border: none;">
+                    <form action="aflyseTid.jsp">
+                        <button type="submit">Aflys tid</button>
+                    </form>
+                </td>
             </tr>
 
        <%

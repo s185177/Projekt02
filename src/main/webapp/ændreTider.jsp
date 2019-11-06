@@ -6,11 +6,17 @@
 </head>
 <body>
 <div id="title" style="background-color: black;">
-    <form action="index.jsp" style="text-align:right";>
+    <form action="logout.jsp" style="text-align:right";>
         <button type="submit">Log ud</button>
     </form>
 <h1 style="color: white; margin-button: 0px;">Du er ved at ændre tiden for din Røngten undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
+<h1 style="color: white">
+    <%request.getParameter( "type" );
+        System.out.println("parameter " + request.getParameter("type"));
+        out.print(request.getParameter( "type" ));
+    %>
 
+</h1>
 
 <p style="color:white">Vælg Sygehus for at finde ledige tider:<form action="">
     <select name="Sygehus">
