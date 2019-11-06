@@ -1,4 +1,4 @@
-package tider;
+package view;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

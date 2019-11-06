@@ -1,4 +1,4 @@
-package aft;
+package data;
 
 public class AftaleBean {
 
