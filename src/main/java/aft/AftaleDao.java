@@ -13,8 +13,12 @@ public class AftaleDao {
         List<AftaleBean> listofbeans = new ArrayList<AftaleBean>();
         try {
 
-            Class.forName("org.sqlite.JDBC").newInstance();
+            /*Class.forName("org.sqlite.JDBC").newInstance();
             conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Rune\\Desktop\\DTU\\3. semester\\IT og Kommunikation\\Projekt\\Projekt 2\\Ny database\\Hospital09.db");
+            */
+            Class.forName("org.mariadb.jdbc.Driver"); //Nødvendigt for Tomcat
+            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sygehus9","bruger","1111");
+
             System.out.println("conn =" + conn);
             String query = "SELECT Aftale.fkCPR , Aftale.fkAftaleType , Aftale.dato , Aftale.sygehus , Aftale.free , AftaleType.Varighed FROM Aftale , AftaleType WHERE fkCPR='" + bruger + "' AND Aftale.fkAftaleType =  AftaleType.idAftaleType ";
 
@@ -44,11 +48,16 @@ public class AftaleDao {
 
                 listofbeans.add(bean);
             }
-        } catch (SQLException | InstantiationException | IllegalAccessException e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // SQLite afprøvning
+        /*catch (SQLException | InstantiationException | IllegalAccessException e) {
             System.out.println("Database undtagelse : " + e.getMessage());
             e.printStackTrace();
+        // SQLite afprøving
 
-        }finally {
+        }*/finally {
             if (conn!=null){
                 try {
                     conn.close();

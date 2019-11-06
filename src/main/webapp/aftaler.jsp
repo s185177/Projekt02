@@ -67,7 +67,7 @@
 
     <%
     List<AftaleBean> aftaler = AftaleDao.hentAftaler( request.getAttribute( "cpr" ));
-    System.out.println("list aftale bean: "+aftaler.size());
+    //System.out.println("list aftale bean: "+aftaler.size());
         for(int i=0; i<aftaler.size() ;i++){
             AftaleBean aftale= aftaler.get(i);
             String sygehus      = aftale.getSygehus();
