@@ -1,5 +1,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="data.ChangeDao" %>
+<%@ page import="data.ChangeBean" %>
+
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>Patient kalender</title>
@@ -18,10 +22,7 @@
         out.print(request.getParameter( "type" ));
         %>--%>
     .... undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
-<h1 style="color: white">
 
-
-</h1>
 
 <p style="color:white">Vælg Sygehus for at finde ledige tider:<form action="">
     <select name="Sygehus">
@@ -47,6 +48,30 @@
 </div>
 
 <table style="border: solid black;" width="100%" cellpadding="20">
+    <% String type = request.getParameter( "type" );
+        List<ChangeBean> changes = ChangeDao.usedappointments(type);
+        System.out.println("Antal CHANGE objekter: " + changes.size());
+        for(int i=0; i<changes.size() ;i++) {
+            ChangeBean change = changes.get(i);
+            String dato = change.getDato();
+            int varighed = change.getVarighed() / 60;
+            System.out.println(dato);
+            System.out.println(varighed);
+        }
+        //System.out.println("parameter " + request.getParameter("type"));
+        //out.print(request.getParameter( "type" ));
+
+
+
+
+
+
+    %>
+
+
+
+
+
     <thead>
     <tr>
         <td style="border: none; font-weight: bold;">Sygehus</td>
