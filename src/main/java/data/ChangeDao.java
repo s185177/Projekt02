@@ -13,13 +13,13 @@ public class ChangeDao {
 
             String query    =   "SELECT Aftale.dato, AftaleType.Varighed  FROM Aftale, AftaleType WHERE fkAftaleType='"+type+"' AND Aftale.fkAftaleType =  AftaleType.idAftaleType ";
 
-            //Afprøvning sqlite
+            /*//Afprøvning sqlite
             Class.forName( "org.sqlite.JDBC" ).newInstance();
             conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\mathi\\Dropbox\\DTU\\3. Semester\\It og kommunikation\\Projekt\\Hospital09.db");
-            //Afprøvning sqlite
+            //Afprøvning sqlite*/
 
-            /*Class.forName( "org.mariadb.jdbc.Driver" ); //Nødvendigt for Tomcat
-            conn = DriverManager.getConnection( "jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111" );*/
+            Class.forName( "org.mariadb.jdbc.Driver" ); //Nødvendigt for Tomcat
+            conn = DriverManager.getConnection( "jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111" );
 
 
             Statement statement = conn.createStatement();
@@ -42,14 +42,14 @@ public class ChangeDao {
 
             }
 
-        } /*catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }*/
-        //SQLite afprøvning
+        }
+        /*//SQLite afprøvning
         catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        //SQLite afprøvning
+        //SQLite afprøvning*/
         // lukker database til sidst
         finally {
             if (conn != null) {
