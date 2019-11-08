@@ -8,8 +8,10 @@
         <h1 style="color: white; margin-button: 0px;"><br>Login for at se dine aftaler på sygehus 9</h1><br>  <%-- der skal indsættes aftaletype som attribut --%>
     </div>
     <br>
-        <h3>
+        <h3 style="color: red;">
             ${forkert}
+            <!-- Forsøgt men ikke officielt afprøvet -->
+                <%--${ingenlog}--%>
         </h3>
         <form action="Borger" method="post">
             <!-- Action giver URL videre til borger, som her er java servlet, der validerer og redirecter-->

@@ -9,12 +9,17 @@
     <form action="logout.jsp" style="text-align:right";>
         <button type="submit">Log ud</button>
     </form>
-<h1 style="color: white; margin-button: 0px;">Du er ved at ændre tiden for din Røngten undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
-<h1 style="color: white">
-    <%request.getParameter( "type" );
+<h1 style="color: white; margin-button: 0px;">Du er ved at ændre tiden for din
+    <!-- Forsøgt men ikke officielt afprøvet -->
+        <%--<%
+            request.setCharacterEncoding("UTF-8");
+            request.getParameter( "type" );
         System.out.println("parameter " + request.getParameter("type"));
         out.print(request.getParameter( "type" ));
-    %>
+        %>--%>
+    .... undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
+<h1 style="color: white">
+
 
 </h1>
 

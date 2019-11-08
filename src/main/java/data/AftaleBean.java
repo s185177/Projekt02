@@ -1,7 +1,6 @@
 package data;
 
 public class AftaleBean {
-
     private String dato;
     private String type;
     private String sygehus;
@@ -9,50 +8,43 @@ public class AftaleBean {
     private String cpr;
     private int varighed;
 
-
     public String getCpr() {
         return cpr;
+    }
+    public void setCpr(String newCpr) {
+        this.cpr = newCpr;
     }
 
     public String getDato() {
         return dato;
     }
+    public void setDato(String newDato) {
+        this.dato = newDato;
+    }
 
     public String getKommentar() {
         return kommentar;
+    }
+    public void setKommentar(String newKommentar) {
+        this.kommentar = newKommentar;
     }
 
     public String getSygehus() {
         return sygehus;
     }
+    public void setSygehus(String newSygehus) {
+        this.sygehus = newSygehus;
+    }
 
     public String getType() {
         return type;
     }
+    public void setType(String newType) {
+        this.type = newType;
+    }
 
     public int getVarighed() { return varighed; }
-
-    public void setCpr(String cpr) {
-        this.cpr = cpr;
-    }
-
-    public void setDato(String dato) {
-        this.dato = dato;
-    }
-
-    public void setKommentar(String kommentar) {
-        this.kommentar = kommentar;
-    }
-
-    public void setSygehus(String sygehus) {
-        this.sygehus = sygehus;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setVarighed(int varighed) {
-        this.varighed = varighed;
+    public void setVarighed(int newVarighed) {
+        this.varighed = newVarighed;
     }
 }
