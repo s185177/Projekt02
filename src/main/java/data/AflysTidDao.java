@@ -10,7 +10,7 @@ public class AflysTidDao {
     public static void AflysTid(String id) throws ClassNotFoundException, SQLException {
         Connection conn =   null;
         try {
-            // SQLite afprøvning
+            // SQLite afprøvning gkfgkgjkkfg
             System.out.println(id);
             Class.forName("org.sqlite.JDBC").newInstance();
             conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Celine\\Desktop\\Hospital09.db");
