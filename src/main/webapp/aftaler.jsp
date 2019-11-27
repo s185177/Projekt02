@@ -18,7 +18,7 @@
             if (bruger == null) {
                 System.out.println("Bruger er ikke logget ind og sendes tilbage til index.jsp");
                 // Forsøgt men ikke officielt afprøvet.
-                    //request.setAttribute( "ingenlog" ,  "Du har endnu ikke logget ind, indtast venligst dine login oplysninger");
+                //request.setAttribute( "ingenlog" ,  "Du har endnu ikke logget ind, indtast venligst dine login oplysninger");
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.forward( request , response );
             } else {
@@ -35,7 +35,7 @@
     <thead>
     <tr>
         <td style="border: none; font-weight: bold;">Tidspunkt</td>
-        <td style="border: none; font-weight: bold;">Aftale Sted</td>
+        <td style="border: none; font-weight: bold;">Sygehus</td>
         <td style="border: none; font-weight: bold;">Aftaletype</td>
         <td style="border: none; font-weight: bold;">Varighed (min)</td>
         <td style="border: none;">&nbsp;</td>
@@ -43,17 +43,18 @@
     </tr>
     </thead>
     <tbody style= "border: none;">
-        <%
+    <%
         List<AftaleBean> aftaler = AftaleDao.hentAftaler( bruger.getCpr() );
 
         // Udskriver hvor mange aftaler der er på følgende person
         System.out.println("Antal aftale objekter: " + aftaler.size() + "\n" + "Til følgende bruger: " + bruger.getCpr());
-            for(int i=0; i<aftaler.size() ;i++){
-                AftaleBean aftale= aftaler.get(i);
-                String sygehus      = "Sygehus " + aftale.getSygehus();
-                String dato         = aftale.getDato();
-                String type         = aftale.getType();
-                int varighed     = aftale.getVarighed() / 60 ;
+        for(int i=0; i<aftaler.size() ;i++){
+            AftaleBean aftale= aftaler.get(i);
+            String sygehus      = "Sygehus " + aftale.getSygehus();
+            String dato         = aftale.getDato();
+            String type         = aftale.getType();
+            int id              =aftale.getId();
+            int varighed     = aftale.getVarighed() / 60 ;
                 /* Forsøgt men ikke officielt afprøvet
                 switch (type) {
                     case "BP":
@@ -67,27 +68,30 @@
                         break;
                 }
                  */
-        %>
-            <form action="ændreTider.jsp" method="post">
-                <tr>
-                    <td style="border: none;"><%=dato%></td>
-                    <td style="border: none;"><%=sygehus%></td>
-                    <td style="border: none;" ><input type="hidden" name="type" value="<%=type%>"> <%=type%> </td>
-                    <td style="border: none;"><%=varighed%></td>
+    %>
+    <form  method="post">
+        <tr>
+            <td style="border: none;"> <input type="hidden" name="dato" value="<%=dato%>"><%=dato%></td>
+            <td style="border: none;"> <input type="hidden" name="sygehus" value="<%=sygehus%>"><%=sygehus%></td>
+            <td style="border: none;" ><input type="hidden" name="type" value="<%=type%>"> <%=type%> </td>
+            <input type="hidden" name="id" value="<%=id%>">
+            <td style="border: none;"><%=varighed%></td>
 
-                    <td style="border: none;">
-                        <button type="submit" value="type">Ændre tid</button>
-                        </form>
-                    </td>
-                    <td style="border: none;">
-                        <form action="aflyseTid.jsp">
-                            <button type="submit">Aflys tid</button>
-                        </form>
-                    </td>
-                </tr>
-           <%
-            }
-            %>
+            <td style="border: none;">
+
+                <button formaction="ændreTider.jsp" type="submit" >Ændre tid</button>
+
+            </td>
+
+            <td style="border: none;">
+                <button formaction="aflyseTid.jsp" type="submit" >Aflys tid</button>
+    </form>
+
+    </td>
+    </tr>
+    <%
+        }
+    %>
     </tbody>
 </table>
 </body>

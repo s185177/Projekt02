@@ -7,6 +7,7 @@ public class AftaleBean {
     private String kommentar;
     private String cpr;
     private int varighed;
+    private int id;
 
     public String getCpr() {
         return cpr;
@@ -46,5 +47,12 @@ public class AftaleBean {
     public int getVarighed() { return varighed; }
     public void setVarighed(int newVarighed) {
         this.varighed = newVarighed;
+    }
+
+    public int getId() { return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
