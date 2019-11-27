@@ -15,13 +15,23 @@
     </form>
 <h1 style="color: white; margin-button: 0px;">Du er ved at ændre tiden for din
     <!-- Forsøgt men ikke officielt afprøvet -->
-        <%--<%
+        <%
             request.setCharacterEncoding("UTF-8");
-            request.getParameter( "type" );
+            switch (request.getParameter( "type" )) {
+                case "BP":
+                    out.print("Blod Prøve");
+                    break;
+                case "CT":
+                    out.print("CT-scanning");
+                    break;
+                case "BIOPS":
+                    out.print("Biopsi");
+                    break;
+            }
         System.out.println("parameter " + request.getParameter("type"));
-        out.print(request.getParameter( "type" ));
-        %>--%>
-    .... undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
+        //out.print(request.getParameter( "type" ));
+        %>
+    undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
 
 
 <p style="color:white">Vælg Sygehus for at finde ledige tider:<form action="">
@@ -57,6 +67,8 @@
             int varighed = change.getVarighed() / 60;
             System.out.println(dato);
             System.out.println(varighed);
+        
+
         }
         //System.out.println("parameter " + request.getParameter("type"));
         //out.print(request.getParameter( "type" ));
@@ -67,11 +79,6 @@
 
 
     %>
-
-
-
-
-
     <thead>
     <tr>
         <td style="border: none; font-weight: bold;">Sygehus</td>
