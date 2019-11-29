@@ -11,7 +11,7 @@ public class UserDAO {
             String query    =   "SELECT * FROM Patient WHERE CPR='" + cpr + "' AND Kode='" + kode + "'; ";
             //Afprøvning sqlite
             Class.forName( "org.sqlite.JDBC" ).newInstance();
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Celine\\Desktop\\Hospital09.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\mathi\\Dropbox\\DTU\\3. Semester\\It og kommunikation\\Projekt\\Hospital09.db");
             //Afprøvning sqlite
             //Class.forName( "org.mariadb.jdbc.Driver" ); //Nødvendigt for Tomcat
             //conn = DriverManager.getConnection( "jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111" );

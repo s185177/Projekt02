@@ -1,9 +1,10 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="data.ChangeDao" %>
-<%@ page import="data.ChangeBean" %>
+<%@ page import="data.AftaleBean" %>
 
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <html>
 <head>
     <title>Patient kalender</title>
@@ -15,13 +16,13 @@
     </form>
 <h1 style="color: white; margin-button: 0px;">Du er ved at ændre tiden for din
     <!-- Forsøgt men ikke officielt afprøvet -->
-        <%--<%
+        <%
             request.setCharacterEncoding("UTF-8");
             request.getParameter( "type" );
         System.out.println("parameter " + request.getParameter("type"));
         out.print(request.getParameter( "type" ));
-        %>--%>
-    .... undersøgelse</h1>  <%-- der skal indsættes aftaletype som attribut --%>
+        %>
+     undersøgelse på følgende tispunkt <% out.print(request.getParameter("dato")); %></h1>  <%-- der skal indsættes aftaletype som attribut --%>
 
 
 <p style="color:white">Vælg Sygehus for at finde ledige tider:<form action="">
@@ -49,15 +50,37 @@
 
 <table style="border: solid black;" width="100%" cellpadding="20">
     <% String type = request.getParameter( "type" );
-        List<ChangeBean> changes = ChangeDao.usedappointments(type);
+       String dato = request.getParameter("dato");
+       String [] Vdato = dato.split(" ");
+       List<String> Otid = new ArrayList<String>();
+       String ledigetid ="";
+       String aaaammdd="";
+       int varighed = 0;
+        List<AftaleBean> changes = ChangeDao.usedappointments(type, Vdato[0]);
         System.out.println("Antal CHANGE objekter: " + changes.size());
+
+
         for(int i=0; i<changes.size() ;i++) {
-            ChangeBean change = changes.get(i);
-            String dato = change.getDato();
-            int varighed = change.getVarighed() / 60;
-            System.out.println(dato);
+            AftaleBean change = changes.get(i);
+            String Odato = change.getDato();
+            String [] Otider = Odato.split(" ");
+            aaaammdd =Otider[0];
+            String [] time =Otider[1].split(":");
+            String finaltime = "";
+            boolean startermednul = time[0].startsWith("0");
+            if(startermednul==true){
+               String [] time2=time[0].split("0",2);
+               finaltime = time2[1]+time[1];
+                startermednul=false;
+            }else finaltime = time[0]+time[1];
+
+            System.out.println(finaltime);
+            Otid.add(finaltime);
+            varighed = change.getVarighed() / 60;
             System.out.println(varighed);
         }
+        List<Integer> ledig = ChangeDao.ledig(Otid, varighed);
+
         //System.out.println("parameter " + request.getParameter("type"));
         //out.print(request.getParameter( "type" ));
 
@@ -68,51 +91,45 @@
 
     %>
 
-
-
-
-
     <thead>
     <tr>
         <td style="border: none; font-weight: bold;">Sygehus</td>
         <td style="border: none; font-weight: bold;">Dato</td>
         <td style="border: none; font-weight: bold;">Tidspunkt</td>
          <td style="border: none; font-weight: bold;">Varighed (min)</td>
-        <td style="border: none;">&nbsp;</td>
+        <td style="border: none;"><form action="aftaler.jsp">
+            <button  align='right' type="submit">Tilbage</button>
+        </form></td>
 
     </tr>
     </thead>
     <tbody style= "border: none;">
     <tr>
-        <td></td>
-        <td style="border: none;">01.11.2019</td>
-        <td style="border: none;">Kl 10.00</td> <%--Henter her timestamp--%>
+        <% if(ledig.size()==0){%>
+            <h3> Der er ingen ledige tider denne dag</h3>
+        <%
+        }
+        for(int i=0; i<ledig.size();i++){
+        int dinetider=ledig.get((i));
+        ledigetid = dinetider+"";
 
-        <td style="border: none;">15 min</td> <%--Henter her varighed--%>
-        <td style="border: none;"><form action="ConfirmChangeAppoint.jsp">
-            <button type="submit">VÆLG</button>
+
+        %>
+        <form method="post" >
+        <td>sygehus 1</td> <!-- dette er til sygehus nummer -->
+        <td style="border: none;"><input type="hidden" name="nydato" value="<%=aaaammdd%>"><%=aaaammdd%></td>
+        <td style="border: none;"><input type="hidden" name="ledigetid" value="<%=ledigetid%>"><%=ledigetid%></td> <%--Henter her timestamp--%>
+
+        <td style="border: none;"><input type="hidden" name="varighed" value="<%=varighed%>"><%=varighed%></td> <%--Henter her varighed--%>
+            <input type="hidden" name="dato" value="<%=dato%>">
+        <td style="border: none;">
+
+            <button type="submit" formaction="ConfirmChangeAppoint.jsp">VÆLG</button>
         </form></td>
 
     </tr>
-    <tr>
-        <td></td>
-        <td style="border: none;">05.11.2019</td>
-        <td style="border: none;">Kl 14.00</td> <%--Henter her timestamp--%>
-        <td style="border: none;">15 min</td> <%--Henter her varighed--%>
-        <td style="border: none;"><button type="button">V&AElig;LG</button></td>
-
-    </tr>
-    <tr>
-        <td></td>
-        <td style="border: none;">20.11.2019</td>
-        <td style="border: none;">Kl 11.00</td> <%--Henter her timestamp--%>
-        <td style="border: none;">15 min</td> <%--Henter her varighed--%>
-        <td style="border: none;"><button type="button">V&AElig;LG</button></td>
-
-    </tr>
+    <%}%>
 </table>
-    <form action="aftaler.jsp">
-        <button  align='right' type="submit">Tilbage</button>
-    </form>
+
 </body>
 </html>
