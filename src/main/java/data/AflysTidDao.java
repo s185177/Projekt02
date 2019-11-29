@@ -13,7 +13,7 @@ public class AflysTidDao {
             // SQLite afprøvning
             System.out.println(id);
             Class.forName("org.sqlite.JDBC").newInstance();
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Celine\\Desktop\\Hospital09.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\mathi\\Dropbox\\DTU\\3. Semester\\It og kommunikation\\Projekt\\Hospital09.db");
             // SQLite afprøvning
             /*Class.forName("org.mariadb.jdbc.Driver"); //Nødvendigt for Tomcat
             conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111");*/
