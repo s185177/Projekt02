@@ -51,6 +51,7 @@
 <table style="border: solid black;" width="100%" cellpadding="20">
     <% String type = request.getParameter( "type" );
        String dato = request.getParameter("dato");
+       String id = request.getParameter("id");
        String [] Vdato = dato.split(" ");
        List<String> Otid = new ArrayList<String>();
        String ledigetid ="";
@@ -122,6 +123,8 @@
 
         <td style="border: none;"><input type="hidden" name="varighed" value="<%=varighed%>"><%=varighed%></td> <%--Henter her varighed--%>
             <input type="hidden" name="dato" value="<%=dato%>">
+            <input type="hidden" name="type" value="<%=type%>">
+            <input type="hidden" name="id" value="<%=id%>">
         <td style="border: none;">
 
             <button type="submit" formaction="ConfirmChangeAppoint.jsp">VÆLG</button>

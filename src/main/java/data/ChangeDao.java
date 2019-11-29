@@ -64,9 +64,49 @@ public class ChangeDao {
         return listofChange;
     }
 
-    public static boolean changetid(String type, String dato, String nydato ){
-        boolean confirm = false;
-        return confirm;
+    public static void  changetid(String id, String nydato ){
+        System.out.println("jeg er i changetid");
+        Connection conn = null;
+        ResultSet resultSet;
+        try {
+
+            String query    =   "UPDATE Aftale SET dato='"+nydato+"' WHERE idAftale='"+id+"'";
+
+            //Afprøvning sqlite
+            Class.forName( "org.sqlite.JDBC" ).newInstance();
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\mathi\\Dropbox\\DTU\\3. Semester\\It og kommunikation\\Projekt\\Hospital09.db");
+            //Afprøvning sqlite*/
+            /*
+            Class.forName( "org.mariadb.jdbc.Driver" ); //Nødvendigt for Tomcat
+            conn = DriverManager.getConnection( "jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111" );
+            */
+
+            Statement statement = conn.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            //Test af forbindelse
+            System.out.println( "Åbner ændre aftale forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
+
+        /*} catch (SQLException e) {
+            e.printStackTrace();*/
+        }
+        //SQLite afprøvning
+        catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        //SQLite afprøvning*/
+        // lukker database til sidst
+        finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                    System.out.println( "Lukker change database-forbindelse " + "\n" );
+                } catch (Exception e) {
+
+                }
+            }
+        }
+
     }
 
 
