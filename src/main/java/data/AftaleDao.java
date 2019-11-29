@@ -13,12 +13,13 @@ public class AftaleDao {
         ResultSet resultSet;
         List<AftaleBean> listofbeans = new ArrayList<AftaleBean>();
         try {
-            // SQLite afprøvning
+            /*// SQLite afprøvning
             Class.forName("org.sqlite.JDBC").newInstance();
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Celine\\Desktop\\Hospital09.db");
-            // SQLite afprøvning
-            /*Class.forName("org.mariadb.jdbc.Driver"); //Nødvendigt for Tomcat
-            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111");*/
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Rune\\Desktop\\DTU\\3. semester\\IT og Kommunikation\\Projekt\\Projekt 2\\Ny database\\Hospital09.db");
+            // SQLite afprøvning*/
+
+            Class.forName("org.mariadb.jdbc.Driver"); //Nødvendigt for Tomcat
+            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111");
 
             String query = "SELECT Aftale.idAftale, Aftale.fkCPR , Aftale.fkAftaleType , Aftale.dato , Aftale.sygehus , Aftale.free " +
                     ", AftaleType.Varighed FROM Aftale , AftaleType " +
@@ -28,7 +29,7 @@ public class AftaleDao {
             resultSet = stmt.executeQuery(query);
 
             //Test af forbindelse
-            System.out.println( "Åbner aftaler database-forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
+            //System.out.println( "Åbner aftaler database-forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
 
             while (resultSet.next()) {
                 AftaleBean bean = new AftaleBean();
@@ -50,21 +51,21 @@ public class AftaleDao {
 
                 listofbeans.add(bean);
             }
-            System.out.println( "Antal aftaler" + listofbeans );
-        } /*catch (SQLException e) {
+            System.out.println( "Antal aftaler tilknyttet indlogget patient: " + listofbeans );
+        } catch (SQLException e) {
             e.printStackTrace();
-        }*/
-        // SQLite afprøvning
+        }
+        /*// SQLite afprøvning
         catch (SQLException | InstantiationException | IllegalAccessException e) {
             System.out.println("Database undtagelse : " + e.getMessage());
             e.printStackTrace();
         }
-        // SQLite afprøving
+        // SQLite afprøving*/
         finally {
             if (conn != null) {
                 try {
                     conn.close();
-                    System.out.println( "Lukker aftaler database-forbindelse" + "\n" );
+                    //System.out.println( "Lukker aftaler database-forbindelse" + "\n" );
                 } catch (Exception e) {
                     System.out.println(e);
                 }

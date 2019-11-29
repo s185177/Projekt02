@@ -23,13 +23,13 @@ public class BorgerServlet extends HttpServlet {
 
             user = UserDAO.validering( user );
             // Test om validering, og ændring af Godkend er sket
-            System.out.println( "Validering af bruger inden session & videresendelse: " + user.isGodkend() );
+            //System.out.println( "Validering af bruger inden session & videresendelse: " + user.isGodkend() );
 
             if (user.isGodkend()) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("bruger", user );   // Tildeler string "bruger" objektet user - som er bean.
                 // Viser nuværende indloggede bruger objekt
-                System.out.println( "Nuværende bruger-objekt: " + session.getAttribute( "bruger" ) );
+                //System.out.println( "Nuværende bruger-objekt efter database godkend: " + session.getAttribute( "bruger" ) );
                 response.sendRedirect("aftaler.jsp");
             } else  {
                 // Angiver forkert login er benyttet - minder om print fra UserDAO

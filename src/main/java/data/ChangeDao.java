@@ -15,18 +15,17 @@ public class ChangeDao {
 
             /*//Afprøvning sqlite
             Class.forName( "org.sqlite.JDBC" ).newInstance();
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\mathi\\Dropbox\\DTU\\3. Semester\\It og kommunikation\\Projekt\\Hospital09.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Rune\\Desktop\\DTU\\3. semester\\IT og Kommunikation\\Projekt\\Projekt 2\\Ny database\\Hospital09.db");
             //Afprøvning sqlite*/
 
             Class.forName( "org.mariadb.jdbc.Driver" ); //Nødvendigt for Tomcat
             conn = DriverManager.getConnection( "jdbc:mariadb://localhost:3306/sygehus9", "bruger", "1111" );
 
-
             Statement statement = conn.createStatement();
             resultSet = statement.executeQuery(query);
 
             //Test af forbindelse
-            System.out.println( "Åbner ændre aftale forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
+            //System.out.println( "Åbner find-type forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
 
             while (resultSet.next()) {
                 AftaleBean bean = new AftaleBean();
@@ -37,7 +36,7 @@ public class ChangeDao {
 
                 //System.out.println(dato);
                 //System.out.println(varighed);
-                System.out.println("JEG ER NU I CHANGEDAO");
+                //System.out.println("JEG ER NU I CHANGEDAO");
                 listofChange.add(bean);
 
             }
@@ -50,12 +49,12 @@ public class ChangeDao {
             e.printStackTrace();
         }
         //SQLite afprøvning*/
-        // lukker database til sidst
+
         finally {
             if (conn != null) {
                 try {
                     conn.close();
-                    System.out.println( "Lukker login database-forbindelse " + "\n" );
+                    //System.out.println( "Lukker find-type database-forbindelse " + "\n" );
                 } catch (Exception e) {
 
                 }
@@ -65,7 +64,7 @@ public class ChangeDao {
     }
 
     public static void  changetid(String id, String nydato ){
-        System.out.println("jeg er i changetid");
+        //System.out.println("jeg er i changetid");
         Connection conn = null;
         ResultSet resultSet;
         try {
@@ -85,7 +84,7 @@ public class ChangeDao {
             resultSet = statement.executeQuery(query);
 
             //Test af forbindelse
-            System.out.println( "Åbner ændre aftale forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
+            //System.out.println( "Åbner ændre aftale forbindelse = " + conn );    // Skriver i catalina.out til afprøvning
 
         /*} catch (SQLException e) {
             e.printStackTrace();*/
@@ -100,7 +99,7 @@ public class ChangeDao {
             if (conn != null) {
                 try {
                     conn.close();
-                    System.out.println( "Lukker change database-forbindelse " + "\n" );
+                    //System.out.println( "Lukker ændre aftale forbindelse " + "\n" );
                 } catch (Exception e) {
 
                 }
@@ -108,18 +107,13 @@ public class ChangeDao {
         }
 
     }
-
-
-
-
-
     public static List<Integer> ledig (List<String> Ltid , int varighed)throws ClassNotFoundException{
 
         List<Integer> listofledig = new ArrayList<Integer>();
         int elementer = Ltid.size();
         boolean nonelemter= false;
         for(int i = 800; i<=1600-varighed; i+=varighed) {
-            System.out.println("dette er mit første i: "+i);
+            //System.out.println("dette er mit første i: "+i);
             String jegeri = i+"";
             int add40 = jegeri.indexOf("6");
             if(add40!=-1){
@@ -131,12 +125,12 @@ public class ChangeDao {
                         nonelemter = true;
                     }
                 }
-                System.out.println("nonelementer " + nonelemter);
+                //.out.println("nonelementer " + nonelemter);
                 if (nonelemter) {
                     nonelemter = false;
                 } else {
                     listofledig.add(i);
-                    System.out.println("dette er i: " + i);
+                    //System.out.println("Når der findes ledig tid: " + i);
 
                 }
             }

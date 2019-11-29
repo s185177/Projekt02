@@ -1,4 +1,4 @@
-<%--
+<%@ page import="data.UserBean" %><%--
   Created by IntelliJ IDEA.
   User: Rune
   Date: 06-11-2019
@@ -11,7 +11,12 @@
     <title>Logout</title>
 </head>
 <body>
-    <% session.invalidate();
+    <%
+        UserBean bruger = (UserBean) session.getAttribute( "bruger" );
+        session.invalidate();
+        bruger = null;
+
+        //System.out.println( "Session efter logout: " + bruger);
         response.sendRedirect("index.jsp");
     %>
 </body>

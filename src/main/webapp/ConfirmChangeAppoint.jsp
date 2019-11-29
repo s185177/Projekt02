@@ -7,12 +7,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ page import="data.ChangeDao" %>
-<html>
+    <html>
 
 <head>
     <title>Patient kalender</title>
 </head>
 <body style="text-align:center";>
+    <%--<%
+        UserBean bruger = (UserBean) session.getAttribute( "bruger" );
+        // Tjekker om man videresendes, hvis ikke man har en session
+        //System.out.println( "\n" + "Tjekker om man har session i bekræft ændring" + bruger );
+        if (bruger == null) {
+            //System.out.println("Bruger er ikke logget ind og sendes tilbage til index.jsp");
+            request.setAttribute( "ingenlog" ,  "Du har endnu ikke logget ind, indtast venligst dine login oplysninger");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward( request , response );
+        }
+    %>--%>
+    <%System.out.println("TEST");%>
 <div id="title" style="background-color: black;">
     <h1 style="color: white; margin-button: 0px;"><br>Er du sikker på at du vil ændre den tid for din <% out.print(request.getParameter("type"));%> undersøgelse</h1><br>  <%-- der skal indsættes aftaletype som attribut --%>
 </div>
@@ -21,7 +33,7 @@
     <%
     String nydato = request.getParameter("nydato");
     String ledigetid = request.getParameter("ledigetid");
-        System.out.println("dette er ledigetid "+ledigetid);
+        //System.out.println("dette er ledigetid " + ledigetid);
     int length = ledigetid.length();
     String first ="";
     String second ="";
@@ -35,7 +47,7 @@
         second = ledigetid.substring(1);
     }
     String datotildatabase = nydato+" "+first+":"+second+":"+"00";
-        System.out.println("datotildatabase "+datotildatabase);
+        //System.out.println("datotildatabase "+datotildatabase);
     %>
     </thead>
     <tbody style= "border: none;">

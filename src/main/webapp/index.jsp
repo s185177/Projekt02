@@ -10,8 +10,7 @@
     <br>
         <h3 style="color: red;">
             ${forkert}
-            <!-- Forsøgt men ikke officielt afprøvet -->
-                <%--${ingenlog}--%>
+            ${ingenlog}
         </h3>
         <form action="Borger" method="post">
             <!-- Action giver URL videre til borger, som her er java servlet, der validerer og redirecter-->
